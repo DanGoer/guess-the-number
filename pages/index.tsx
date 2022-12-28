@@ -1,20 +1,38 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [randomNumber, setRandomNumber] = useState(
+    Math.floor(Math.random() * 101)
+  );
+  const [numberGuess, setNumberGuess] = useState();
+  const guesses = [];
+
+  const handleNumber: (
+    value: number,
+    e: React.SyntheticEvent<EventTarget>
+  ) => void = (value: number, e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Head>
-        <title>Transfer List</title>
-        <meta name="description" content="An ordinary transfer list" />
+        <title>Guess the Number!</title>
+        <meta name="description" content="A Guessing Game" />
         <link rel="icon" href="/D.svg" />
       </Head>
       <main className={styles.main}>
         <h1>Guess the Number</h1>
         <h2>Enter a guess between 0 to 100</h2>
-        <input></input>
+        <input
+          onChange={(e) => handleNumber(e.target.value, e)}
+          placeholder="Enter a Number"
+          value={numberGuess}
+        ></input>
         <div>
           <button>Submit</button>
           <button>Start Game</button>
