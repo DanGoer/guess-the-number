@@ -11,7 +11,17 @@ export default function Home() {
         <meta name="description" content="An ordinary transfer list" />
         <link rel="icon" href="/D.svg" />
       </Head>
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <h1>Guess the Number</h1>
+        <h2>Enter a guess between 0 to 100</h2>
+        <input></input>
+        <div>
+          <button>Submit</button>
+          <button>Start Game</button>
+        </div>
+        <h3>direction and value of the guess</h3>
+        <h3>Your guesses:</h3>
+      </main>
       <footer className={styles.footer}>
         <a
           href="https://www.dangoer.de/"
