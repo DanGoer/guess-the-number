@@ -8,14 +8,21 @@ export default function Home() {
   const [randomNumber, setRandomNumber] = useState(
     Math.floor(Math.random() * 101)
   );
-  const [numberGuess, setNumberGuess] = useState();
+
+  const [numberGuess, setNumberGuess] = useState<number>();
+
   const guesses = [];
 
-  const handleNumber: (
-    value: number,
-    e: React.SyntheticEvent<EventTarget>
-  ) => void = (value: number, e: React.SyntheticEvent<EventTarget>) => {
-    e.preventDefault();
+  const rNumber = randomNumber;
+
+  console.log(rNumber);
+
+  const handleNumber: (event: React.SyntheticEvent) => void = (event) => {
+    event.preventDefault();
+    const rNumber = randomNumber;
+
+    if (numberGuess != undefined && numberGuess > rNumber) {
+    }
   };
 
   return (
@@ -28,13 +35,16 @@ export default function Home() {
       <main className={styles.main}>
         <h1>Guess the Number</h1>
         <h2>Enter a guess between 0 to 100</h2>
-        <input
-          onChange={(e) => handleNumber(e.target.value, e)}
-          placeholder="Enter a Number"
-          value={numberGuess}
-        ></input>
+        <form onSubmit={handleNumber}>
+          <input
+            onChange={(event) => setNumberGuess(parseInt(event.target.value))}
+            placeholder="Enter a Number"
+            type="number"
+            value={numberGuess}
+          ></input>
+          <button type="submit">Submit</button>
+        </form>
         <div>
-          <button>Submit</button>
           <button>Start Game</button>
         </div>
         <h3>direction and value of the guess</h3>
